@@ -1,0 +1,12 @@
+
+.section-gallery__grid{
+    padding: 0;
+    margin: 0 auto;
+
+    list-style: none;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(282px, min-content));
+    justify-content: center;
+    gap: 20px 17px;
+}

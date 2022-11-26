@@ -1,0 +1,15 @@
+.section-header__nav {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+}
+
+@media screen and (max-width:555px) {
+  .section-header__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

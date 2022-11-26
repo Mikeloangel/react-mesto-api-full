@@ -1,0 +1,24 @@
+@keyframes spin {
+  from {
+    transform: rotate(0) scale(1);
+  }
+
+  25%{
+    transform: rotate(90) scale(.8);
+  }
+
+  75%{
+    transform: rotate(270deg) scale(1.2);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.section-spinner__image {
+  max-width: 150px;
+  object-fit: contain;
+
+  animation: spin 3s ease-in-out 0s infinite normal forwards;
+}

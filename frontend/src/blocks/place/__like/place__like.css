@@ -1,0 +1,22 @@
+.place__like{
+    --transition: var(--hover-transition, 'all 1s linear');
+    
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+    min-width: 22px;
+    min-height: 19px;
+
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: var(--transition);
+
+    background: url(../../../images/btn-like.svg) center no-repeat;
+    background-size: 22px auto;
+}
+
+.place__like:hover{
+    opacity: .5;
+}

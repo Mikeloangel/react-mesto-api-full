@@ -1,0 +1,19 @@
+.btn-edit{
+    --transition: var(--hover-transition, all ease 1s);
+
+    background-color: transparent;
+    border: none;
+
+    padding: 0;
+    margin: 0;
+    width: min-content;
+    max-height: 50px;
+    
+    cursor: pointer;
+    transition: var(--transition);
+    
+}
+
+.btn-edit:hover{
+    opacity: .6;
+}

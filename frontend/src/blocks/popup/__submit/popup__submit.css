@@ -1,0 +1,54 @@
+.popup__submit {
+  --text-color: var(--coloron-primary, #456);
+  --bg-color: var(--color-primary, #111);
+  --transition: var(--hover-transition, 'all 1s ease');
+
+  width: 100%;
+  padding: 14px 0 14px 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  border: none;
+  border-radius: 2px;
+  background-color: var(--bg-color);
+
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.popup__submit:hover {
+  opacity: .8;
+}
+
+.popup__submit:disabled,
+.popup__submit_disabled {
+  --bg-color: var(--coloron-primary, #456);
+  --text-color: var(--color-primary, #111);
+
+  opacity: 0.2;
+  cursor: initial;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--text-color);
+}
+
+.popup__submit:disabled:hover,
+.popup__submit_disabled:hover {
+  opacity: 0.2;
+}
+
+.popup__submit:focus {
+  outline: 2px solid rgba(25, 32, 168, 0.8);
+}
+
+@media screen and (max-width:555px) {
+  .popup__submit {
+    font-size: 14px;
+  }
+}

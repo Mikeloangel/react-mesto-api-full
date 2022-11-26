@@ -1,0 +1,26 @@
+.section {
+  /* width: min(880px, calc(100% - 400px)); */
+  width: min(880px, calc(100% - 100px));
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .section {
+    width: calc(100% - 20vw);
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .section {
+    width: calc(100% - 15vw);
+  }
+}
+
+
+@media screen and (max-width: 425px) {
+  .section {
+    width: calc(100% - 38px);
+  }
+}

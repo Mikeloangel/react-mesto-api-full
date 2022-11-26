@@ -1,0 +1,8 @@
+.section-spinner {
+  padding-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+

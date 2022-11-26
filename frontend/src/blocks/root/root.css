@@ -1,0 +1,33 @@
+.root {
+    /* color scheme */
+
+    /* ## base colors */
+    --color-primary: #000;
+    --coloron-primary: #fff;
+    --coloron-primary-low: #545454;
+    --coloron-primary-low-bright: #ccc;
+    --color-error: #FF0000;
+    --color-overlay-500: rgba(0,0,0,.5);
+    --color-overlay-900: rgba(0,0,0,.9);
+
+    /* ## other global variables */
+    --hover-transition: all ease 500ms;
+
+    background-color: var(--color-primary);
+
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}

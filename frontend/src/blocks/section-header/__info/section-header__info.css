@@ -1,0 +1,12 @@
+.section-header__info {
+  --color: var(--coloron-primary, #ddd);
+  margin: 0;
+
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+
+  text-align: right;
+
+  color: var(--color);
+}

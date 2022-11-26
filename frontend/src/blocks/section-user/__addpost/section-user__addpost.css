@@ -1,0 +1,10 @@
+.section-user__addpost{
+    flex: 0 0 150px;
+}
+
+@media screen and (max-width: 760px) {
+    .section-user__addpost{
+        max-height: 50px;
+        flex: 0 0 50px;
+    }
+}

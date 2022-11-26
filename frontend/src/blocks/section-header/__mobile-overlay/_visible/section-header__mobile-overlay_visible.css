@@ -1,0 +1,10 @@
+.section-header__mobile-overlay_visible{
+  height: 100vh;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 555px) {
+  .section-header__mobile-overlay_visible{
+    visibility: visible;
+  }
+}

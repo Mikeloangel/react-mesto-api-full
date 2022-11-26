@@ -1,0 +1,9 @@
+.section-sign__link {
+  --color: var(--coloron-primary, #555);
+  color: var(--color);
+  text-decoration: none;
+}
+
+.section-sign__link:hover {
+  opacity: .6;
+}

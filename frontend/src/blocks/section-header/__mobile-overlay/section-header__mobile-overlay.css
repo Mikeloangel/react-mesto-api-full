@@ -1,0 +1,17 @@
+.section-header__mobile-overlay{
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100vw;
+  height: 0;
+
+  background-color: rgba(0,0,0,0);
+  visibility: hidden;
+  z-index: 9;
+}
+
+@media screen and (max-width: 555px) {
+  .section-header__mobile-overlay{
+    visibility: visible;
+  }
+}

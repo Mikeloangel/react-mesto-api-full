@@ -1,0 +1,11 @@
+.place__body{
+    --bg-color: var(--coloron-primary, #555);
+
+    padding: 19px 20px 19px 20px;
+    margin: 0;
+    background-color: var(--bg-color);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

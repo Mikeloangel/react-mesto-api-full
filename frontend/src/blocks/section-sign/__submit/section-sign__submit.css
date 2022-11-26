@@ -1,0 +1,50 @@
+.section-sign__submit {
+  --color: var(--color-primary, #555);
+  --color-bg: var(--coloron-primary, #ccc);
+
+  width: 100%;
+
+  padding: 14px 0;
+  margin-bottom: 15px;
+
+  border-radius: 2px;
+  border: 0;
+
+  color: var(--color);
+  background-color: var(--color-bg);
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.section-sign__submit:hover{
+  opacity: .85;
+}
+
+.section-sign__submit:disabled{
+  --color: var(--coloron-primary, #555);
+  --color-bg: var(--color-primary, #ccc);
+
+  opacity: .5;
+  cursor: default;
+
+  background-color: var(--color-bg);
+  color: var(--color);
+  border: 1px solid var(--color);
+}
+
+.section-sign__submit:disabled:hover{
+  opacity: .5;
+}
+
+@media screen and (max-width:425px) {
+  .section-sign__submit{
+    font-size: 16px;
+    margin-bottom: 19px;
+  }
+}

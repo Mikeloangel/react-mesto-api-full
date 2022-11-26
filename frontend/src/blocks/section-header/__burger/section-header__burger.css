@@ -1,0 +1,16 @@
+.section-header__burger {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  margin-right: 14px;
+
+  cursor: pointer;
+
+  visibility: hidden;
+}
+
+@media screen and (max-width:555px){
+  .section-header__burger {
+    visibility: visible;
+  }
+}

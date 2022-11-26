@@ -1,0 +1,10 @@
+.section-header__link_shaded{
+  --color: var(--coloron-primary-low, #ccc);
+  color: var(--color);
+}
+
+@media screen and (max-width:555px) {
+  .section-header__link_shaded{
+    font-size: 18px;
+  }
+}

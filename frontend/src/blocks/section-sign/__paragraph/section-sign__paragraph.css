@@ -1,0 +1,13 @@
+.section-sign__paragraph {
+  --color: var(--coloron-primary, #555);
+  padding: 0;
+  margin: 0 auto;
+  width: fit-content;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+
+  color: var(--color);
+}

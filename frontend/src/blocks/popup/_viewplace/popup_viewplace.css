@@ -1,0 +1,5 @@
+.popup_viewplace{
+    --back-color:  var(--color-overlay-900, #555);
+    
+    background-color: var(--back-color);
+}

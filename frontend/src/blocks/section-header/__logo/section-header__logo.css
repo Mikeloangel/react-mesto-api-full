@@ -1,0 +1,14 @@
+.section-header__logo{
+    min-height: 33px;
+    min-width: 142px;
+
+    background: url(../../../images/logo.svg) left no-repeat;
+    background-size: contain;
+}
+
+@media screen and (max-width:425px) {
+    .section-header__logo{
+        min-height: 24px;
+        margin-left: 14px;
+    }
+}

@@ -1,0 +1,16 @@
+.popup__fig-img {
+    max-width: 75vw;
+    max-height: 75vh;
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    object-fit: contain;
+}
+
+@media screen and (max-width:555px){
+  .popup__fig-img{
+    max-width: 100%;
+  }
+}

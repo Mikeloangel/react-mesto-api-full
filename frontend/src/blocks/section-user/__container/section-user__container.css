@@ -1,0 +1,10 @@
+.section-user__container{
+    display: flex;
+    gap: 18px;
+}
+
+@media screen and (max-width: 760px) {    
+    .section-user__container{
+        gap:10px;
+    }
+}

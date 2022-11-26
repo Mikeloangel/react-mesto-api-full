@@ -1,0 +1,13 @@
+.popup__btn-close-img{
+    padding: 0;
+    margin: 0;
+    width: 32px;
+    height: auto;
+    object-fit: contain;
+}
+
+@media screen and (max-width:555px) {
+    .popup__btn-close-img{
+        width: 20px;
+    }
+}

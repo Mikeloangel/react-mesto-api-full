@@ -1,0 +1,19 @@
+.section-user__edit{
+    display: block;
+    padding: 14px 20px 0 0;
+    margin: 0;
+
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    .section-user__edit{
+        padding: 10px 20px 0 0;
+    }
+}
+
+@media screen and (max-width: 760px) {    
+    .section-user__edit{
+        padding: 5px 20px 0 0;        
+    }
+}

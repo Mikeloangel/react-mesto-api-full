@@ -1,0 +1,20 @@
+.section-user__info{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis:auto;
+    padding: 0 0 0 28px;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;     
+}
+
+@media screen and (max-width: 760px) {
+    .section-user__info{
+        margin: 26px 0 36px 0;
+        padding: 0;
+        flex-grow: 0;
+        flex-shrink: 0;
+        max-width: 100%;
+    }
+}

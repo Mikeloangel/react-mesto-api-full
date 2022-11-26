@@ -1,0 +1,23 @@
+.section-user__pic-edit{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  place-content: center center;
+
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: visibility 200ms, opacity 200ms linear;
+}
+
+.section-user__pic-container:hover > .section-user__pic-edit{
+  visibility: visible;
+  opacity: 1;
+}

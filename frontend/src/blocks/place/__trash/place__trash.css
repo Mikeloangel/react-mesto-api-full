@@ -1,0 +1,27 @@
+.place__trash{
+    --transition: var(--hover-transition, 'all 1s linear');
+
+    background: url(../../../images/btn-trash.svg) center no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    
+    min-width: 18px;
+    min-height: 19px;
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    
+    cursor: pointer;
+    border: none;
+
+    transition: var(--transition);    
+}
+
+.place__trash:hover{
+    opacity: .6;
+}

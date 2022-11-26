@@ -1,0 +1,11 @@
+.popup__fig-caption {
+    --text-color: var(--coloron-primary, #553388);
+
+    padding-top: 10px;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: var(--text-color);
+}

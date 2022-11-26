@@ -1,0 +1,107 @@
+/* 1.0 VENDOR css files */
+
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);
+
+/* 2.0 Common blocks css files */
+@import url(./blocks/root/root.css);
+
+@import url(./blocks/section/section.css);
+@import url(./blocks/section/__title/section__title.css);
+
+@import url(./blocks/btn-edit/btn-edit.css);
+@import url(./blocks/btn-edit/__img/btn-edit__img.css);
+
+@import url(./blocks/btn-plus/btn-plus.css);
+
+@import url(./blocks/place/place.css);
+@import url(./blocks/place/__trash/place__trash.css);
+@import url(./blocks/place/__trash_hidden/place__trash_hidden.css);
+@import url(./blocks/place/__img/place__img.css);
+@import url(./blocks/place/__body/place__body.css);
+@import url(./blocks/place/__title/place__title.css);
+@import url(./blocks/place/__like/place__like.css);
+@import url(./blocks/place/__like/_acive/place__like_active.css);
+@import url(./blocks/place/__like-container/place__like-container.css);
+@import url(./blocks/place/__like-counter/place__like-counter.css);
+
+
+@import url(./blocks/popup/poopup.css);
+@import url(./blocks/popup/_opened/popup_opened.css);
+@import url(./blocks/popup/__content/popup__content.css);
+@import url(./blocks/popup/__btn-close/popup__btn-close.css);
+@import url(./blocks/popup/__btn-close-img/popup__btn-close-img.css);
+@import url(./blocks/popup/__title/popup__title.css);
+@import url(./blocks/popup/__form/popup__form.css);
+@import url(./blocks/popup/__form-input/popup__form-input.css);
+@import url(./blocks/popup/__submit/popup__submit.css);
+@import url(./blocks/popup/__content/_viewplace/popup__content_viewplace.css);
+@import url(./blocks/popup/__fig/popup__fig.css);
+@import url(./blocks/popup/__fig-img/popup__fig-img.css);
+@import url(./blocks/popup/__fig-caption/popup__fig-caption.css);
+@import url(./blocks/popup/_viewplace/popup_viewplace.css);
+@import url(./blocks/popup/__form-error/popup__form-error.css);
+@import url(./blocks/popup/__form-error/_visible/popup__form-error_visible.css);
+@import url(./blocks/popup/__message/popup__message.css);
+@import url(./blocks/popup/_tooltip/popup__content_tooltip.css);
+@import url(./blocks/popup/__info-img/popup__info-img.css);
+@import url(./blocks/popup/__info-title/popup__info-title.css);
+
+
+/* 3.0 Sections css files */
+/*  SECTION: HEADER  */
+@import url(./blocks/section-header/section-header.css);
+@import url(./blocks/section-header/__mobile-overlay/section-header__mobile-overlay.css);
+@import url(./blocks/section-header/__mobile-overlay/_visible/section-header__mobile-overlay_visible.css);
+@import url(./blocks/section-header/__bar/section-header__bar.css);
+@import url(./blocks/section-header/__logo/section-header__logo.css);
+@import url(./blocks/section-header/__logo-link/section-header__logo-link.css);
+@import url(./blocks/section-header/__burger/section-header__burger.css);
+@import url(./blocks/section-header/__burger-stripe/section-header__burger-stripe.css);
+@import url(./blocks/section-header/__service/section-header__service.css);
+@import url(./blocks/section-header/__service/_open/section-header__service_open.css);
+@import url(./blocks/section-header/__nav/section-header__nav.css);
+@import url(./blocks/section-header/__info/section-header__info.css);
+@import url(./blocks/section-header/__link/section-header__link.css);
+@import url(./blocks/section-header/__link_shaded/section-header__link_shaded.css);
+
+/*   SECTION: USER INFO*/
+@import url(./blocks/section-user/section-user.css);
+@import url(./blocks/section-user/__pic-container/section-user__pic-container.css);
+@import url(./blocks/section-user/__pic-edit/section-user__pic-edit.css);
+@import url(./blocks/section-user/__btn-edit-pic/section-user__btn-edit-pic.css);
+@import url(./blocks/section-user/__pic/section-user__pic.css);
+@import url(./blocks/section-user/__info/section-user__info.css);
+@import url(./blocks/section-user/__container/section-user__container.css);
+@import url(./blocks/section-user/__name/section-user__name.css);
+@import url(./blocks/section-user/__edit/section-user__edit.css);
+@import url(./blocks/section-user/__description/section-user__description.css);
+@import url(./blocks/section-user/__edit-btn/section-user__edit-btn.css);
+@import url(./blocks/section-user/__addpost/section-user__addpost.css);
+
+
+/*   SECTION: USER GALLERY*/
+@import url(./blocks/section-gallery/section-gallery.css);
+@import url(./blocks/section-gallery/__grid/section-gallery__grid.css);
+
+
+/*   SECTION: FOOTER*/
+@import url(./blocks/section-footer/section-footer.css);
+@import url(./blocks/section-footer/__copyright/section-footer__copyright.css);
+
+/*   SECTION: SIGN */
+@import url(./blocks/section-sign/section-sign.css);
+@import url(./blocks/section-sign/__form/section-sign__form.css);
+@import url(./blocks/section-sign/__input/section-sign__input.css);
+@import url(./blocks/section-sign/__link/section-sign__link.css);
+@import url(./blocks/section-sign/__paragraph/section-sign__paragraph.css);
+@import url(./blocks/section-sign/__submit/section-sign__submit.css);
+@import url(./blocks/section-sign/__title/section-sign__title.css);
+
+
+/* SECTION: Spinner */
+@import url(./blocks/section-spinner/section-spinner.css);
+@import url(./blocks/section-spinner/__image/section-spinner__image.css);
+
+/* * {outline: 1px dashed #a66;} */
+

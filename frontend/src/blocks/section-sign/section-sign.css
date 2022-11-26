@@ -1,0 +1,17 @@
+.section-sign {
+  padding: 60px 0 80px 0;
+}
+
+@media screen and (max-width:425px) {
+  .section-sign{
+    padding: 40px 10px 80px 10px;
+  }
+}
+
+
+
+
+
+
+
+

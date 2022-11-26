@@ -1,0 +1,16 @@
+.section-user{
+    padding-top: 41px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 760px) {
+    .section-user{
+        flex-direction: column;
+        padding-bottom: 36px;
+    }
+}
+

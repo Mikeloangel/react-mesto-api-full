@@ -1,0 +1,8 @@
+/* .section-gallery{    
+} */
+
+@media screen and (max-width:1279px) {
+    .section-gallery{
+        width: calc(100% - 10vw);
+    }    
+}

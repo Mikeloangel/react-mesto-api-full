@@ -1,0 +1,26 @@
+.popup__form-input{
+    --text-color: var(--color-primary, #222);
+
+    width:100%;
+    padding: 0 0 10px 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, .2);
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+.popup__form-input:invalid,
+.popup__form-input_type_error{
+    --b-color: var(--color-error,pink);
+    border-bottom: 1px solid var(--b-color);
+}
+
+.popup__form-input:focus{
+    outline: 1px solid rgba(0,0,0, .2);
+}

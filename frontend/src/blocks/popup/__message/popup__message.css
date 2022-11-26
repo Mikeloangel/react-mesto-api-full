@@ -1,0 +1,12 @@
+.popup__message{
+  --text-color: var(--color-primary, #553388);
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--text-color);
+}

@@ -1,0 +1,18 @@
+.popup__info-title {
+  --color: var(--color-primary, #555);
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+
+  color: var(--color);
+}
+
+@media screen and (max-width:555px) {
+  .popup__info-title {
+    font-size: 20px;
+  }
+}
