@@ -12,6 +12,7 @@ const { errors } = require('celebrate');
 // middlewares
 const { auth } = require('./middlewares/auth');
 const { handleErrors } = require('./middlewares/handleErrors');
+const { errorLogger, requestLogger } = require('./middlewares/logger');
 
 // routes
 const usersRoutes = require('./routes/users');
@@ -31,6 +32,9 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// request logger
+app.use(requestLogger);
+
 // unprotected routes
 app.use('/', indexRoutes);
 
@@ -44,8 +48,13 @@ app.all('*', (req, res, next) => {
   next(new ResourceNotFoundError());
 });
 
+// error logger
+app.use(errorLogger);
+
 // error handling
+// celebrate validation
 app.use(errors());
+// centralized
 app.use(handleErrors);
 
 app.listen(PORT, () => {
