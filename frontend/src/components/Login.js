@@ -32,7 +32,7 @@ function Login({ onFail, onSuccess }) {
 
     apiAuth.authorization(mailInput, passwordInput)
       .then(() => {
-        onSuccess();
+        // onSuccess();
       })
       .catch(errorMsg => {
         onFail(errorMsg);

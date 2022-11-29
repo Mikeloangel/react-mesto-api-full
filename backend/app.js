@@ -29,16 +29,13 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 const app = express();
 
 const options = {
-  // origin: [
-  //   'http://localhost:3000',
-  //   'https://ВАШ ДОМЕЙН С ДОКУМЕНТА',
-  //   'https://YOUR.github.io',
-  // ],
-  // origin: [
-  //   'http://localhost:3000',
-  //   'http://127.0.0.1:3000',
-  // ],
-  origin: '*',
+  origin: [
+    'http://localhost:3000',
+    'http://mestology.nomoredomains.club',
+    'https://mestology.nomoredomains.club',
+    // 'https://YOUR.github.io',
+  ],
+  // origin: '*',
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,

@@ -1,6 +1,6 @@
 import parseErrorMessage from "./parseErrorMessage";
 
-export const BASE_URL = 'http://localhost:3100';
+export const BASE_URL = 'https://supermesto.nomoredomains.club';
 export const BASE_HEADERS = {
   'Content-Type': 'application/json',
 }
