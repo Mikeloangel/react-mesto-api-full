@@ -111,7 +111,14 @@ module.exports.login = (req, res, next) => {
         NODE_ENV ? JWT_SECRET : 'dev',
         { expiresIn: '7d' },
       );
-      res.cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true });
+
+      res.cookie('jwt', token, {
+        maxAge: 3600000 * 24 * 7,
+        httpOnly: true,
+        sameSite: false,
+        secure: false,
+      });
+
       res.send({ message: 'ok' });
     })
     .catch((err) => {

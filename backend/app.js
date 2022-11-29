@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3100 } = process.env;
 
 // libs
 const express = require('express');
@@ -8,6 +8,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+
+// cors
+const cors = require('cors');
 
 // middlewares
 const { auth } = require('./middlewares/auth');
@@ -24,6 +27,26 @@ const ResourceNotFoundError = require('./errors/not-found-error');
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 const app = express();
+
+const options = {
+  // origin: [
+  //   'http://localhost:3000',
+  //   'https://ВАШ ДОМЕЙН С ДОКУМЕНТА',
+  //   'https://YOUR.github.io',
+  // ],
+  // origin: [
+  //   'http://localhost:3000',
+  //   'http://127.0.0.1:3000',
+  // ],
+  origin: '*',
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Accept', 'Access-Control-Allow-Headers', 'credentials'],
+  credentials: true,
+};
+
+app.use('*', cors(options));
 
 // cookie parser
 app.use(cookieParser());
@@ -52,9 +75,9 @@ app.all('*', (req, res, next) => {
 app.use(errorLogger);
 
 // error handling
-// celebrate validation
+// celebrate validation errors
 app.use(errors());
-// centralized
+// centralized error handling
 app.use(handleErrors);
 
 app.listen(PORT, () => {

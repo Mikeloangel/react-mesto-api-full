@@ -35,7 +35,6 @@ function Header({ onSignOut }) {
           {appState.isLogged ? (
             <>
               <p className="section-header__info">{appState.userMail}</p>
-              {/* <Link to={'/sign-out'} className="section-header__link section-header__link_shaded">Выйти</Link> */}
               <Link to={'#'} onClick={onSignOut} className="section-header__link section-header__link_shaded">Выйти</Link>
             </>
           ) : (

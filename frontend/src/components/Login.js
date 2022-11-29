@@ -27,16 +27,19 @@ function Login({ onFail, onSuccess }) {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
+
     setIsSubmittingForm(true);
+
     apiAuth.authorization(mailInput, passwordInput)
-      .then(token => {
-        onSuccess(token);
+      .then(() => {
+        onSuccess();
       })
       .catch(errorMsg => {
         onFail(errorMsg);
         setIsSubmittingForm(false);
         console.log(errorMsg);
       });
+
   }, [mailInput, onFail, onSuccess, passwordInput]);
 
   return isLogged ?

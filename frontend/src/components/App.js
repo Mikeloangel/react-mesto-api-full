@@ -57,25 +57,39 @@ function App() {
   //checks token
   useEffect(() => {
     //check token
-    const token = localStorage.getItem('token');
-    apiAuth.checkToken(token)
-      .then(userData => {
-        setUserMail(userData.email);
+    setIsAppReady(true);
+
+    api.getUserMe()
+      .then(userInfo => {
+        setUserMail(userInfo.email);
         setIsLogged(true);
       })
-      .catch(() => {
-        history.push('/sign-in')
-      })
-      .finally(() => {
-        setIsAppReady(true);
+      .catch((err)=>{
+        setIsLogged(false);
+        setUserMail('');
+        history.push('/sign-in');
       });
 
-    // retrieve currentUser
-    if (isLogged) {
-      api.getUserMe()
-        .then(setCurrentUser)
-        .catch(err => api.handleError(err, setApiErrorMessage));
-    }
+    // const token = localStorage.getItem('token');
+    // apiAuth.checkToken(token)
+    //   .then(userData => {
+    //     setUserMail(userData.email);
+    //     setIsLogged(true);
+    //   })
+    //   .catch(() => {
+    //     history.push('/sign-in')
+    //   })
+    //   .finally(() => {
+    //     setIsAppReady(true);
+    //   });
+
+    // // retrieve currentUser
+    // if (isLogged) {
+    //   api.getUserMe()
+    //     .then(setCurrentUser)
+    //     .catch(err => api.handleError(err, setApiErrorMessage));
+    // }
+
 
   }, [history, isLogged]);
 
@@ -191,7 +205,8 @@ function App() {
   }
 
   function handleSignOut() {
-    apiAuth.forgetToken();
+    // apiAuth.forgetToken();
+    apiAuth.logout();
     setIsLogged(false);
     setUserMail('');
   }
@@ -216,7 +231,7 @@ function App() {
   }
 
   function handleLoginOnSuccess(token) {
-    localStorage.setItem('token', token);
+    // localStorage.setItem('token', token);
     setIsLogged(true);
     history.push('/');
   }

@@ -2,6 +2,10 @@ class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
+
+    // this._headers.sameSite = false;
+    // this._headers.secure = false;
+    this._headers.credentials = 'include';
   }
 
   async _getJSON(res) {
@@ -88,10 +92,11 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-49',
+  // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-49',
+  baseUrl: 'http://localhost:3100',
   headers: {
-    authorization: 'f965250c-63b8-497e-85ae-bfe5bf7bc71a',
-    'Content-Type': 'application/json'
+    // authorization: 'f965250c-63b8-497e-85ae-bfe5bf7bc71a',
+    'Content-Type': 'application/json',
   }
 });
 
