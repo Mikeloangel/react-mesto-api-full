@@ -6,8 +6,8 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   //Context
   const {currentUser} = React.useContext(AppContext);
 
-  const isOwn = card.owner._id === currentUser?._id;
-  const isLIked = React.useMemo(() => card.likes.some(l => l._id === currentUser._id),[card.likes, currentUser]);
+  const isOwn = card.owner === currentUser?._id;
+  const isLIked = React.useMemo(() => card.likes.some(l => l === currentUser._id),[card.likes, currentUser]);
 
   const cardDeleteButtonClassName = `place__trash ${isOwn ? 'place__trash_visible' : 'place__trash_hidden'}`;
   const cardLikeButtonClassName = `place__like ${isLIked && 'place__like_active' }`;

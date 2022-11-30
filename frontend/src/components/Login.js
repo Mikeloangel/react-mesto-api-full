@@ -28,39 +28,39 @@ function Login({ onFail, onSuccess }) {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
-    fetch(
-      'http://supermesto.nomoredomains.club/signin',
-      {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          "withCredentials" : true,
-        },
-        credentials: 'include',
-        body: JSON.stringify({ password: passwordInput, email: mailInput })
-      }
-    )
-      .then(res => {
-        console.log(Object.fromEntries(res.headers))
-        return res.json();
-      })
-      .then(data => {
-        console.log(data)
-      })
-
-
-    // setIsSubmittingForm(true);
-
-    // apiAuth.authorization(mailInput, passwordInput)
-    //   .then(() => {
-    //     onSuccess();
+    // fetch(
+    //   'https://supermesto.nomoredomains.club/signin',
+    //   {
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json',
+    //       "withCredentials" : true,
+    //     },
+    //     credentials: 'include',
+    //     body: JSON.stringify({ password: passwordInput, email: mailInput })
+    //   }
+    // )
+    //   .then(res => {
+    //     console.log(Object.fromEntries(res.headers))
+    //     return res.json();
     //   })
-    //   .catch(errorMsg => {
-    //     onFail(errorMsg);
-    //     setIsSubmittingForm(false);
-    //     console.log(errorMsg);
-    //   });
+    //   .then(data => {
+    //     console.log(data)
+    //   })
+
+
+    setIsSubmittingForm(true);
+
+    apiAuth.authorization(mailInput, passwordInput)
+      .then(() => {
+        onSuccess();
+      })
+      .catch(errorMsg => {
+        onFail(errorMsg);
+        setIsSubmittingForm(false);
+        console.log(errorMsg);
+      });
 
   }, [mailInput, onFail, onSuccess, passwordInput]);
 

@@ -2,10 +2,6 @@ class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
-
-    // this._headers.sameSite = false;
-    // this._headers.secure = false;
-    this._headers.credentials = 'include';
   }
 
   async _getJSON(res) {
@@ -21,9 +17,9 @@ class Api {
 
   _getRouteRequest(route, method, body = null) {
     return body ?
-      fetch(`${this._baseUrl}${route}`, { method, headers: this._headers, body: JSON.stringify(body) })
+      fetch(`${this._baseUrl}${route}`, { method, headers: this._headers, body: JSON.stringify(body),  credentials: 'include' })
         .then(this._getJSON) :
-      fetch(`${this._baseUrl}${route}`, { method, headers: this._headers })
+      fetch(`${this._baseUrl}${route}`, { method, headers: this._headers, credentials: 'include' })
         .then(this._getJSON);
 
   }
@@ -92,10 +88,8 @@ class Api {
 }
 
 const api = new Api({
-  // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-49',
   baseUrl: 'https://supermesto.nomoredomains.club',
   headers: {
-    // authorization: 'f965250c-63b8-497e-85ae-bfe5bf7bc71a',
     'Content-Type': 'application/json',
   }
 });

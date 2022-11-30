@@ -122,14 +122,30 @@ module.exports.login = (req, res, next) => {
       res.send({ message: 'ok' });
     })
     .catch((err) => {
-      res.clearCookie('jwt');
+      // res.clearCookie('jwt');
+      // othervise cookies sent but not set
+      res.cookie('jwt', '', {
+        maxAge: 3600000 * 24 * 7,
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+      });
+
       next(err);
     });
 };
 
 // logout controller
 module.exports.logout = (req, res) => {
-  res.clearCookie('jwt');
+  // res.clearCookie('jwt');
+  // othervise cookies sent but not set
+  res.cookie('jwt', '', {
+    maxAge: 3600000 * 24 * 7,
+    httpOnly: true,
+    sameSite: 'none',
+    secure: true,
+  });
+
   res.send({ message: 'До новых встреч!' });
 };
 

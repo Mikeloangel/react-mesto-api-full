@@ -4,7 +4,6 @@ export const BASE_URL = 'https://supermesto.nomoredomains.club';
 export const BASE_HEADERS = {
   'Content-Type': 'application/json',
 }
-// export const BASE_URL = 'https://auth.nomoreparties.co';
 
 /**
  * Makes fetch request to API
@@ -14,9 +13,8 @@ export const BASE_HEADERS = {
  * @param {Object} headers
  * @returns {Promise}
  */
-const fetchAuthApi = async (endpoint, method, body = null, headers = BASE_HEADERS) => {
-  // const config = { method, headers };
-  const config = { method, headers: BASE_HEADERS };
+const fetchAuthApi = async (endpoint, method, body = null, headers = BASE_HEADERS, credentials = 'same-origin') => {
+  const config = { method, headers, credentials };
 
   if (body) {
     config.body = JSON.stringify(body);
@@ -39,11 +37,17 @@ export const register = async (email, password) => {
 
 // authorization
 export const authorization = async (email, password) => {
-  const res = await fetchAuthApi('signin', 'post', { password, email });
+  const res = await fetchAuthApi('signin', 'post', { password, email },
+    {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      "withCredentials": true,
+    },
+    'include'
+  );
 
   if (res.status === 200) {
     const data = await res.json();
-    // return data.token;
 
     return data.message;
   }
@@ -52,31 +56,15 @@ export const authorization = async (email, password) => {
   return Promise.reject(errorMessage);
 }
 
-// check jwt token  (depricated)
-export const checkToken = async (token) => {
-  const res = await fetchAuthApi('users/me', 'get', null,
-    {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
-    });
-
-  if (res.status === 200) {
-    const userData = await res.json();
-    return userData.data;
-  }
-
-  const errorMessage = await parseErrorMessage(res, 'message');
-  return Promise.reject(errorMessage);
-}
-
-// forget token (depricated)
-export const forgetToken = (tokenFieldName = 'token') => {
-  localStorage.removeItem(tokenFieldName);
-}
-
 // logout
 export const logout = async () => {
-  const res = await fetchAuthApi('signout', 'get');
-  await res.json();
-  // update this
+  const res = await fetchAuthApi('signout', 'get', null,
+    {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      "withCredentials": true,
+    },
+    'include');
+
+  return await res.json();
 }

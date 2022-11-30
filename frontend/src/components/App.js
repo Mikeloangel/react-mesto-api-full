@@ -54,43 +54,25 @@ function App() {
 
   const history = useHistory();
 
-  //checks token
+  //checks cookie
+  // if can getUsersMe then we have valid cookies and can update userinfo
+  // othervise logout
   useEffect(() => {
-    //check token
-    setIsAppReady(true);
-
     api.getUserMe()
       .then(userInfo => {
         setUserMail(userInfo.email);
+        setCurrentUser(userInfo);
         setIsLogged(true);
+        history.push('/');
       })
-      .catch((err)=>{
+      .catch((err) => {
         setIsLogged(false);
         setUserMail('');
         history.push('/sign-in');
+      })
+      .finally(() => {
+        setIsAppReady(true);
       });
-
-    // const token = localStorage.getItem('token');
-    // apiAuth.checkToken(token)
-    //   .then(userData => {
-    //     setUserMail(userData.email);
-    //     setIsLogged(true);
-    //   })
-    //   .catch(() => {
-    //     history.push('/sign-in')
-    //   })
-    //   .finally(() => {
-    //     setIsAppReady(true);
-    //   });
-
-    // // retrieve currentUser
-    // if (isLogged) {
-    //   api.getUserMe()
-    //     .then(setCurrentUser)
-    //     .catch(err => api.handleError(err, setApiErrorMessage));
-    // }
-
-
   }, [history, isLogged]);
 
   //on CurrentUser changes retrieves initial cards
@@ -164,7 +146,7 @@ function App() {
   }
 
   function handleCardLike(cardToLike) {
-    const isLiked = cardToLike.likes.some(like => like._id === currentUser._id);
+    const isLiked = cardToLike.likes.some(like => like === currentUser._id);
     const likePromise = isLiked ? api.deleteLike(cardToLike._id) : api.putLike(cardToLike._id);
 
     likePromise
@@ -205,10 +187,13 @@ function App() {
   }
 
   function handleSignOut() {
-    // apiAuth.forgetToken();
-    apiAuth.logout();
-    setIsLogged(false);
-    setUserMail('');
+    apiAuth.logout()
+      .then((res) => {
+        console.log(res);
+        setIsLogged(false);
+        setUserMail('');
+      })
+
   }
 
   function handleRegisterOnFail(data) {
@@ -230,8 +215,7 @@ function App() {
     setInfoType('fail');
   }
 
-  function handleLoginOnSuccess(token) {
-    // localStorage.setItem('token', token);
+  function handleLoginOnSuccess() {
     setIsLogged(true);
     history.push('/');
   }
