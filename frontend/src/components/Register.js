@@ -69,7 +69,11 @@ function Register({ onFail, onSuccess }) {
         />
         <p className="section-sign__form-error">{formik.touched.password && formik.errors.password}</p>
 
-        <button type="submit" className="section-sign__submit" disabled={!formik.isValid || isSubmittingForm}>
+        <button
+          type="submit"
+          className="section-sign__submit"
+          disabled={!(formik.isValid && (formik.dirty && !isSubmittingForm))}
+        >
           {isSubmittingForm ? 'В процессе...' : 'Зарегистрироваться'}
         </button>
       </form>
