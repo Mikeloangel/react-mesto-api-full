@@ -29,21 +29,20 @@ function Login({ onFail, onSuccess }) {
     e.preventDefault();
 
     fetch(
-      'https://supermesto.nomoredomains.club/signin',
+      'http://supermesto.nomoredomains.club/signin',
       {
         method: 'POST',
         headers: {
-          "content-type": "API-Key",
           Accept: 'application/json',
+          'Content-Type': 'application/json',
+          "withCredentials" : true,
         },
         credentials: 'include',
         body: JSON.stringify({ password: passwordInput, email: mailInput })
       }
     )
       .then(res => {
-        console.log(res.headers.get('set-cookie')); // undefined
-        console.log(document.cookie); // nope
-        console.log(res)
+        console.log(Object.fromEntries(res.headers))
         return res.json();
       })
       .then(data => {
