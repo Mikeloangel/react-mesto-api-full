@@ -1,11 +1,12 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { Redirect } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from 'yup';
 
 import { AppContext } from '../contexts/AppContext';
 
-import updateFieldSetter from "../utils/updateFormFieldSetter";
 import * as apiAuth from "../utils/ApiAuth";
 
 function Login({ onFail, onSuccess }) {
@@ -13,67 +14,70 @@ function Login({ onFail, onSuccess }) {
 
   const [isSubmittingForm, setIsSubmittingForm] = useState(false)
 
-  const [mailInput, setMailInput] = useState('');
-  const [passwordInput, setPasswrodInput] = useState('');
+  // formik form validation logics
+  const formik = useFormik({
+    initialValues: {
+      mail: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      mail: Yup.string().email('Должен быть правильный адрес почты').required('Электропочта обязательна'),
+      password: Yup.string().required('Пароль – обязательное поле'),
+    }),
+    onSubmit: (values) => {
+      setIsSubmittingForm(true);
 
-  const fieldSetters = {
-    'mail': setMailInput,
-    'password': setPasswrodInput
-  }
+      apiAuth.authorization(values.mail, values.password)
+        .then(() => {
+          onSuccess();
+        })
+        .catch(errorMsg => {
+          onFail(errorMsg);
+          setIsSubmittingForm(false);
+          console.log(errorMsg);
+        });
 
-  const handleInputChange = useCallback((e) => {
-    updateFieldSetter(fieldSetters, e.target.name, e.target.value);
-  }, [fieldSetters]);
-
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-
-    // fetch(
-    //   'https://supermesto.nomoredomains.club/signin',
-    //   {
-    //     method: 'POST',
-    //     headers: {
-    //       Accept: 'application/json',
-    //       'Content-Type': 'application/json',
-    //       "withCredentials" : true,
-    //     },
-    //     credentials: 'include',
-    //     body: JSON.stringify({ password: passwordInput, email: mailInput })
-    //   }
-    // )
-    //   .then(res => {
-    //     console.log(Object.fromEntries(res.headers))
-    //     return res.json();
-    //   })
-    //   .then(data => {
-    //     console.log(data)
-    //   })
-
-
-    setIsSubmittingForm(true);
-
-    apiAuth.authorization(mailInput, passwordInput)
-      .then(() => {
-        onSuccess();
-      })
-      .catch(errorMsg => {
-        onFail(errorMsg);
-        setIsSubmittingForm(false);
-        console.log(errorMsg);
-      });
-
-  }, [mailInput, onFail, onSuccess, passwordInput]);
+    }
+  });
 
   return isLogged ?
     (<Redirect to="/" />) :
     (<section className="section section-sign" >
       <h2 className="section-sign__title">Вход</h2>
-      <form name="signin" className="section-sign__form" onSubmit={handleSubmit}>
-        <input name="mail" type="email" required className="section-sign__input" placeholder="Email" value={mailInput} onChange={handleInputChange} />
-        <input name="password" type="password" required className="section-sign__input" placeholder="Пароль" value={passwordInput} onChange={handleInputChange} />
-        <button type="submit" className="section-sign__submit" disabled={isSubmittingForm}>
+      <form
+        name="signin"
+        className="section-sign__form"
+        onSubmit={formik.handleSubmit}
+      >
+
+        <input
+          name="mail"
+          type="email"
+          required
+          className={`section-sign__input ${formik.touched.mail && formik.errors.mail && 'section-sign__input_error'}`}
+          placeholder="Email"
+          value={formik.values.mail}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        <p className="section-sign__form-error">{formik.touched.mail && formik.errors.mail}</p>
+
+        <input
+          name="password"
+          type="password"
+          required
+          className={`section-sign__input ${formik.touched.password && formik.errors.password && 'section-sign__input_error'}`}
+          placeholder="Пароль"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        <p className="section-sign__form-error">{formik.touched.password && formik.errors.password}</p>
+
+        <button type="submit" className="section-sign__submit" disabled={!formik.isValid || isSubmittingForm}>
           {isSubmittingForm ? 'В процессе...' : 'Войти'}
         </button>
+
       </form>
     </section>);
 }

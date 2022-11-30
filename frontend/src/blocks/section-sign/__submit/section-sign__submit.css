@@ -6,6 +6,7 @@
 
   padding: 14px 0;
   margin-bottom: 15px;
+  margin-top: 216px;
 
   border-radius: 2px;
   border: 0;
@@ -20,6 +21,7 @@
   text-align: center;
 
   cursor: pointer;
+
 }
 
 .section-sign__submit:hover{
@@ -46,5 +48,6 @@
   .section-sign__submit{
     font-size: 16px;
     margin-bottom: 19px;
+    margin-top: 172px;
   }
 }

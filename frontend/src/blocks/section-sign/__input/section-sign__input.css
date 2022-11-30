@@ -4,7 +4,6 @@
 
   width: 100%;
   padding: 0 0 10px 0;
-  margin-bottom: 27px;
   box-sizing: border-box;
 
   background-color: var(--color-bg);
@@ -18,19 +17,9 @@
 
 }
 
-.section-sign__input:last-of-type {
-  margin-bottom: 216px;
-}
-
 .section-sign__input::placeholder {
   --color: var(--coloron-primary-low-bright, #393);
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
-}
-
-@media screen and (max-width:425px) {
-  .section-sign__input:last-of-type{
-    margin-bottom: 172px;
-  }
 }

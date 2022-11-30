@@ -1,0 +1,12 @@
+.section-sign__form-error {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-size: 14px;
+  color: coral;
+  min-height: 16px;
+
+  margin-bottom: 17px;
+  align-self: flex-start;
+}

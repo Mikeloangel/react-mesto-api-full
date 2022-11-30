@@ -92,7 +92,9 @@
 /*   SECTION: SIGN */
 @import url(./blocks/section-sign/section-sign.css);
 @import url(./blocks/section-sign/__form/section-sign__form.css);
+@import url(./blocks/section-sign/__form-error/section-sign__form-error.css);
 @import url(./blocks/section-sign/__input/section-sign__input.css);
+@import url(./blocks/section-sign/__input/_error/section-sign__input_error.css);
 @import url(./blocks/section-sign/__link/section-sign__link.css);
 @import url(./blocks/section-sign/__paragraph/section-sign__paragraph.css);
 @import url(./blocks/section-sign/__submit/section-sign__submit.css);
