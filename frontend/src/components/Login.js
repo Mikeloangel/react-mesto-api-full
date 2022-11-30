@@ -28,17 +28,40 @@ function Login({ onFail, onSuccess }) {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
-    setIsSubmittingForm(true);
-
-    apiAuth.authorization(mailInput, passwordInput)
-      .then(() => {
-        // onSuccess();
+    fetch(
+      'https://supermesto.nomoredomains.club/signin',
+      {
+        method: 'POST',
+        headers: {
+          "content-type": "API-Key",
+          Accept: 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ password: passwordInput, email: mailInput })
+      }
+    )
+      .then(res => {
+        console.log(res.headers.get('set-cookie')); // undefined
+        console.log(document.cookie); // nope
+        console.log(res)
+        return res.json();
       })
-      .catch(errorMsg => {
-        onFail(errorMsg);
-        setIsSubmittingForm(false);
-        console.log(errorMsg);
-      });
+      .then(data => {
+        console.log(data)
+      })
+
+
+    // setIsSubmittingForm(true);
+
+    // apiAuth.authorization(mailInput, passwordInput)
+    //   .then(() => {
+    //     onSuccess();
+    //   })
+    //   .catch(errorMsg => {
+    //     onFail(errorMsg);
+    //     setIsSubmittingForm(false);
+    //     console.log(errorMsg);
+    //   });
 
   }, [mailInput, onFail, onSuccess, passwordInput]);
 
