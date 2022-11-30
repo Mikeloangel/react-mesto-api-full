@@ -35,7 +35,6 @@ const options = {
     'https://mestology.nomoredomains.club',
     // 'https://YOUR.github.io',
   ],
-  // origin: '*',
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
@@ -54,6 +53,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // request logger
 app.use(requestLogger);
+
+// crash test
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 // unprotected routes
 app.use('/', indexRoutes);
