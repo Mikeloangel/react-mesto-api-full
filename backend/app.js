@@ -13,28 +13,24 @@ const { errors } = require('celebrate');
 const cors = require('cors');
 
 // middlewares
-const { auth } = require('./middlewares/auth');
 const { handleErrors } = require('./middlewares/handleErrors');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
 
 // routes
-const usersRoutes = require('./routes/users');
-const cardsRoutes = require('./routes/cards');
 const indexRoutes = require('./routes/index');
-
-const ResourceNotFoundError = require('./errors/not-found-error');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 const app = express();
 
+// cors
 const options = {
-  origin: [
-    'http://localhost:3000',
-    'http://mestology.nomoredomains.club',
-    'https://mestology.nomoredomains.club',
-    // 'https://YOUR.github.io',
-  ],
+  // origin: [
+  //   'http://localhost:3000',
+  //   'http://mestology.nomoredomains.club',
+  //   'https://mestology.nomoredomains.club',
+  // ],
+  origin: '*',
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
@@ -54,18 +50,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // request logger
 app.use(requestLogger);
 
-// unprotected routes
-app.use('/', indexRoutes);
-
-app.use(auth);
-// protected routes
-app.use('/users', usersRoutes);
-app.use('/cards', cardsRoutes);
-
-// handle 404
-app.all('*', (req, res, next) => {
-  next(new ResourceNotFoundError());
-});
+// routes
+app.use(indexRoutes);
 
 // error logger
 app.use(errorLogger);
@@ -76,6 +62,7 @@ app.use(errors());
 // centralized error handling
 app.use(handleErrors);
 
+// server
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server started at port ${PORT}`);

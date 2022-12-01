@@ -116,7 +116,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'none',
-        secure: true,
+        secure: !NODE_ENV,
       });
 
       res.send({ message: 'ok' });
@@ -128,7 +128,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'none',
-        secure: true,
+        secure: !NODE_ENV,
       });
 
       next(err);
@@ -137,13 +137,15 @@ module.exports.login = (req, res, next) => {
 
 // logout controller
 module.exports.logout = (req, res) => {
+  const { NODE_ENV } = process.env;
+
   // res.clearCookie('jwt');
   // othervise cookies sent but not set
   res.cookie('jwt', '', {
     maxAge: 3600000 * 24 * 7,
     httpOnly: true,
     sameSite: 'none',
-    secure: true,
+    secure: !NODE_ENV,
   });
 
   res.send({ message: 'До новых встреч!' });
