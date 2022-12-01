@@ -54,13 +54,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // request logger
 app.use(requestLogger);
 
-// crash test
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
 // unprotected routes
 app.use('/', indexRoutes);
 
