@@ -4,6 +4,7 @@ const { PORT = 3100 } = process.env;
 
 // libs
 const express = require('express');
+const expressLimiter = require('express-rate-limit');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -22,6 +23,14 @@ const indexRoutes = require('./routes/index');
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 const app = express();
+
+// rate limiter
+const limiter = expressLimiter({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
+
+app.use(limiter);
 
 // cors
 const options = {
