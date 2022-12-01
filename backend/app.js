@@ -4,14 +4,14 @@ const { PORT = 3100 } = process.env;
 
 // libs
 const express = require('express');
-const expressLimiter = require('express-rate-limit');
 const mongoose = require('mongoose');
+
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-
-// cors
 const cors = require('cors');
+const expressLimiter = require('express-rate-limit');
+const helmet = require('helmet');
 
 // middlewares
 const { handleErrors } = require('./middlewares/handleErrors');
@@ -31,6 +31,9 @@ const limiter = expressLimiter({
 });
 
 app.use(limiter);
+
+// helmet
+app.use(helmet());
 
 // cors
 const options = {
