@@ -37,12 +37,11 @@ app.use(helmet());
 
 // cors
 const options = {
-  // origin: [
-  //   'http://localhost:3000',
-  //   'http://mestology.nomoredomains.club',
-  //   'https://mestology.nomoredomains.club',
-  // ],
-  origin: '*',
+  origin: [
+    'http://localhost:3000',
+    'http://mestology.nomoredomains.club',
+    'https://mestology.nomoredomains.club',
+  ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
